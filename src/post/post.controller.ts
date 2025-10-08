@@ -20,7 +20,7 @@ export class PostController {
 
   @Get('markers')
   getAllMarkers() {
-    return throws.postService.getAllMarkers();
+    return this.postService.getAllMarkers();
   }
 
   @Get('/posts')
