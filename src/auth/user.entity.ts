@@ -1,3 +1,4 @@
+import { Post } from 'src/post/post.entity';
 import { MarkerColor } from 'src/post/marker-color.enum';
 import {
   BaseEntity,
@@ -5,6 +6,7 @@ import {
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   Unique,
   UpdateDateColumn,
@@ -60,4 +62,7 @@ export class User extends BaseEntity {
 
   @Column({ nullable: true })
   hashedRefreshToken?: string;
+
+  @OneToMany(() => Post, (post) => post.user, { eager: false }) // eager는 관계인 데이터를 함께 가져온다.
+  post: Post[];
 }
